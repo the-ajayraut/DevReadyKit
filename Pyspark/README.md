@@ -83,6 +83,11 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
+### Install Jupyter Notebook 
+```commandline
+pip install notebook
+```
+
 ### Install PySpark Inside the Virtual Environment
 ```commandline
 pip install pyspark
