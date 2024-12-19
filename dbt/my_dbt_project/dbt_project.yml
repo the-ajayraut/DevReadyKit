@@ -5,7 +5,6 @@
 name: 'my_dbt_project'
 version: '1.0.0'
 
-
 # This setting configures which "profile" dbt uses for this project.
 profile: 'my_dbt_project'
 
