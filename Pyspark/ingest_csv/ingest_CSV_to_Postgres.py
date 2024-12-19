@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import sys
 
 
-# In[ ]:
+# In[2]:
 
 
 # Check if arguments are passed
@@ -16,17 +16,17 @@ if len(sys.argv) > 1:
     tablename = sys.argv[2]  # Second argument (Table name)
 else:
     # Default values in case arguments are missing
-    filename = "default.csv"
-    tablename = "default_table"
+    filename = "Employee_202412151916.csv"
+    tablename = "default_csv_table"
 
 
-# In[20]:
+# In[3]:
 
 
 from pyspark.sql import SparkSession
 
 
-# In[21]:
+# In[4]:
 
 
 spark = SparkSession.builder \
@@ -37,21 +37,21 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 
-# In[22]:
+# In[5]:
 
 
 spark.sparkContext.setLogLevel("ERROR")
 
 
-# In[6]:
+# In[10]:
 
 
 # Input CSV File
-input_csv = filename #"Employee_202412151916.csv"    # Replace with your CSV file name
-pg_table =  tablename #"pg_table_csv"                  # target table - name
+input_csv = "/home/ajay/DevReadyKit/Pyspark/ingest_csv/Employee_202412151916.csv" #+ filename  # Replace with your CSV file name
+pg_table = "default_csv_table"                 # target table - name
 
 
-# In[7]:
+# In[11]:
 
 
 # Postgres credentials
@@ -62,7 +62,7 @@ pg_username = "postgres"
 pg_password = "root"
 
 
-# In[8]:
+# In[12]:
 
 
 # PostgreSQL Connection Details
@@ -74,21 +74,28 @@ connection_properties = {
 }
 
 
-# In[9]:
+# In[13]:
 
 
 # Step 1: Load CSV File into a DataFrame
 csv_df = spark.read.option("inferSchema","true").option("header","true").csv(input_csv)
 
 
-# In[10]:
+# In[18]:
+
+
+#Remove double quotes from column names in when loading CSV
+csv_df = csv_df.toDF(*[col.lower() for col in csv_df.columns])      
+
+
+# In[16]:
 
 
 # Show the DataFrame for validation (optional)
 csv_row_count = csv_df.count()
 
 
-# In[11]:
+# In[17]:
 
 
 # Step 2: Write DataFrame to PostgreSQL Table
@@ -101,20 +108,20 @@ csv_df.write.jdbc(
 print(f"Data successfully loaded into {pg_table} table.")
 
 
-# In[12]:
+# In[15]:
 
 
 # test postgres table loaded or not.
 pg_table_df = spark.read.jdbc(url=jdbc_url, table=pg_table, properties=connection_properties)
 
 
-# In[14]:
+# In[16]:
 
 
 pg_table_row_count = pg_table_df.count()
 
 
-# In[15]:
+# In[17]:
 
 
 if csv_row_count != pg_table_row_count :
