@@ -47,8 +47,8 @@ spark.sparkContext.setLogLevel("ERROR")
 
 
 # Input CSV File
-input_csv = "/home/ajay/DevReadyKit/Pyspark/ingest_csv/Employee_202412151916.csv" #+ filename  # Replace with your CSV file name
-pg_table = "default_csv_table"                 # target table - name
+input_csv = "/home/ajay/DevReadyKit/Pyspark/ingest_csv/" + filename  # Replace with your CSV file name
+pg_table = tablename                 # target table - name
 
 
 # In[11]:

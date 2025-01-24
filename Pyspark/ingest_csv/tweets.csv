@@ -1,0 +1,11 @@
+id,user_id,text,timestamp
+1,1,Hello world!,2024-12-25 10:30:00
+2,1,Learning Python.,2024-12-25 12:00:00
+3,2,SQL is fun!,2024-12-27 14:15:00
+4,2,Pandas is awesome.,2024-12-27 16:00:00
+5,3,Happy New Year!,2024-12-31 23:59:00
+6,3,Exploring data engineering.,2024-12-31 15:20:00
+7,4,Machine Learning rocks.,2024-12-29 12:05:00
+8,4,Building data pipelines.,2024-12-29 14:00:00
+9,5,Data is the new oil.,2024-12-26 22:10:00
+10,5,Optimizing Spark jobs.,2024-12-26 08:30:00
