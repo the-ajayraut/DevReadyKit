@@ -55,8 +55,3 @@ dist/
 
 # Ignore Docker-related files
 *.pid
-
-
-*.Identifier
-
-Pyspark/pyspark_template/data/output/*
