@@ -55,3 +55,6 @@ dist/
 
 # Ignore Docker-related files
 *.pid
+
+
+*.Identifier
