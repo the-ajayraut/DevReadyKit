@@ -58,3 +58,5 @@ dist/
 
 
 *.Identifier
+
+Pyspark/pyspark_template/data/output/*
