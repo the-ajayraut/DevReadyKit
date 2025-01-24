@@ -63,10 +63,16 @@ kafka-topics --alter \
 
 Command	                                Description
 ```kafka-topics --list```	            List all topics.
+
 ```kafka-topics --describe```	        Describe topic details (partitions, replicas).
+
 ```kafka-console-producer```	        Start a producer to send messages.
+
 ```kafka-console-consumer```	        Start a consumer to read messages.
+
 ```kafka-consumer-groups --list```	    List active consumer groups.
+
 ```kafka-consumer-groups --describe```	Show details of a consumer group.
+
 
 
